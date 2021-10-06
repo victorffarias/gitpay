@@ -1,64 +1,52 @@
+import { styled, Card } from '@material-ui/core'
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { withRouter, Link } from 'react-router-dom'
-import LoginButton from './login-button'
-import { withStyles, Card, CardContent } from '@material-ui/core'
+import { withRouter } from 'react-router'
 
-import cyan from '@material-ui/core/colors/cyan'
+const backgroundImage = require('../../images/login-background.jpg');
+const logoGitpay = require('../../images/logo-complete.png')
 
-const styles = theme => ({
-  container: {
-    width: '100%',
-    height: '100vh',
+const PageWrapper = styled('div')({
     display: 'flex',
+    flexDirection: 'row',
+    width: '100vw',
+    height: '100vh',
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPositionX: '50%',
+    backgroundPositionY: '100%',
+
     justifyContent: 'center',
-    backgroundColor: cyan[500]
-  },
-  card: {
-    width: '50%',
-    marginTop: 50
-  },
-  cardContent: {
-    textAlign: 'center'
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
-  }
+    alignItems: 'center'
+});
+
+const FormWrapper = styled(Card)({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'top',
+    alignItems: 'center',
+
+    padding: '30px',
+    width: '550px',
+    height: '875px',
 })
 
-const Content = styled.div`
-  margin-top: 10px;
-`
-
-const logo = require('../../images/logo-complete-gray.png')
+const GitpayLogo = styled('img')({
+    width: '80%',
+    objectFit: 'scale-down'
+    
+})
 
 class LoginPage extends Component {
-  componentDidMount () {
-    if (this.props.match && this.props.match.params.status === 'invalid') {
-      this.props.addNotification && this.props.addNotification('user.invalid')
+    render() {
+        return (
+            <PageWrapper>
+                <FormWrapper>
+                    <GitpayLogo src={logoGitpay} />
+                </FormWrapper>
+            </PageWrapper>
+        )
     }
-  }
-
-  render () {
-    const { classes } = this.props
-    return (
-      <div className={ classes.container }>
-        <Card className={ classes.card }>
-          <CardContent className={ classes.cardContent }>
-            <Link to='/'>
-              <img src={ logo } width={ 200 } />
-            </Link>
-            <Content>
-              <LoginButton includeForm />
-            </Content>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
 }
 
-export default withRouter(withStyles(styles)(LoginPage))
+export default withRouter(LoginPage)
