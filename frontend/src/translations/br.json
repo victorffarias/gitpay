@@ -89,6 +89,8 @@
   "account.actions.cancel": "Cancelar",
   "account.actions.update": "Atualizar conta",
   "account.register.headline": "Nenhuma conta está cadastrada para receber pagamentos",
+  "account.register.create.headline": "Bem vindo!",
+  "account.register.create.subheadline": "Crie sua conta",
   "account.register.create.action": "Criar conta",
   "account.register.paypal.title": "Ativar conta do Paypal",
   "account.register.paypal.description": "Ative sua conta Paypal para receber as recompensas. Para esta modalidade, as taxas do Paypal serão aplicadas",
